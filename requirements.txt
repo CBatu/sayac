@@ -35,6 +35,7 @@ pyasn1_modules==0.4.1
 pycparser==2.22
 PyJWT==2.10.1
 pyparsing==3.2.1
+pytz==2025.1
 requests==2.32.3
 rsa==4.9
 uritemplate==4.1.1
