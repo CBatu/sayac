@@ -2,13 +2,17 @@ import firebase_admin
 from firebase_admin import credentials, db
 from flask import Flask, render_template, request
 from datetime import datetime
+import os
+import json
 
 app = Flask(__name__)
 
 # Firebase ile bağlantı kuruyoruz
-cred = credentials.Certificate('/etc/secrets/serviceAccountKey.json')  # Firebase service account key dosyasının yolu
+
+firebase_key = os.getenv("FIREBASE_KEY")
+cred = credentials.Certificate(json.loads(firebase_key))  # Firebase service account key dosyasının yolu
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://siken-f8bb0-default-rtdb.firebaseio.com/'  # Firebase Realtime Database URL
+    'databaseURL': os.getenv('FIREBASE_DB_URL')  # Firebase Realtime Database URL
 })
 
 # Firebase'den 'last_completed_job_date' verisini al
