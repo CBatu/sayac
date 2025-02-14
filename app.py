@@ -6,7 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Firebase ile bağlantı kuruyoruz
-cred = credentials.Certificate('serviceAccountKey.json')  # Firebase service account key dosyasının yolu
+cred = credentials.Certificate('/etc/secrets/serviceAccountKey.json')  # Firebase service account key dosyasının yolu
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://siken-f8bb0-default-rtdb.firebaseio.com/'  # Firebase Realtime Database URL
 })
